@@ -1,18 +1,25 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { todoAction } from './actions/todo.action';
+
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [input, setInput] = useState(null);
+  const [input, setInput] = useState('');
+  const dispatch = useDispatch();
+
+  const todos = useSelector((state) => state.todoReducer);
 
   const addTask = () => {
-    const tasksTemp = [...tasks, input];
-    setTasks(tasksTemp);
+    if (input.trim() !== '') {
+      dispatch(todoAction(input));
+      setInput('');
+    }
   }
 
   return (
     <div className="App">
       <h1>Todo</h1>
       <form action="" onSubmit={e => { e.preventDefault(); addTask() }}>
-        <input type="text" onChange={e => setInput(e.target.value)} placeholder='Add task' />
+        <input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder='Add Task' />
         <div className="submit">
           <input type="submit" value="Add" />
         </div>
@@ -20,8 +27,11 @@ function App() {
       <div>
         <ul>
           {
-            ...tasks?.map((task, index) => (
-              <li key={index}>{task}</li>
+            todos?.map((task, index) => (
+              <li key={index}>
+                <span>{task}</span>
+                <button>Delete</button>
+              </li>
             ))
           }
         </ul>
