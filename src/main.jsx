@@ -13,7 +13,7 @@ import App from './App';
 import './index.css';
 
 const store = createStore(
-  combineReducers(reducers),
+  reducers,
   composeWithDevTools(applyMiddleware(thunk))
 )
 
