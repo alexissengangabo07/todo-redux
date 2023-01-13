@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { todoAction } from './actions/todo.action';
+import { addTodoAction, deleteTaskAction } from './actions/todo.action';
 
 function App() {
   const [input, setInput] = useState('');
@@ -10,9 +10,13 @@ function App() {
 
   const addTask = () => {
     if (input.trim() !== '') {
-      dispatch(todoAction(input));
+      dispatch(addTodoAction({ id: new Date().getTime(), task: input }));
       setInput('');
     }
+  }
+
+  const deleteTask = (id) => {
+    dispatch(deleteTaskAction(id));
   }
 
   return (
@@ -27,10 +31,10 @@ function App() {
       <div>
         <ul>
           {
-            todos?.map((task, index) => (
+            todos?.map((todo, index) => (
               <li key={index}>
-                <span>{task}</span>
-                <button>Delete</button>
+                <span>{todo.task}</span>
+                <button onClick={() => deleteTask(todo.id)}>Delete</button>
               </li>
             ))
           }
