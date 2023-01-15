@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import reducers from './reducers';
 import App from './App';
-import './index.css';
+import './index.min.css';
 
 const store = createStore(
   reducers,
