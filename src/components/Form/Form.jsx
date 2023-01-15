@@ -8,7 +8,7 @@ const Form = () => {
 
   const addTask = () => {
     if (input.trim() !== '') {
-      dispatch(addTodoAction({ id: new Date().getTime(), task: input }));
+      dispatch(addTodoAction({ id: new Date().getTime(), task: input, done: false }));
       setInput('');
     }
   }

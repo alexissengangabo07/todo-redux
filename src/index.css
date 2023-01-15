@@ -6,6 +6,24 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(136, 158, 159);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: cadetblue;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgb(82, 131, 158);
 }
 
 .App {
@@ -64,7 +82,7 @@ body {
   width: 320px;
   padding: 17px;
   border-top: 1px solid lightgray;
-  max-height: 520px;
+  max-height: 500px;
   overflow-y: scroll;
 }
 
@@ -103,4 +121,8 @@ body {
   border: none;
   border-radius: 3px;
   color: #fff;
+}
+
+.task-done {
+  text-decoration: line-through;
 }
