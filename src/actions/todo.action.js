@@ -6,8 +6,15 @@ export const addTodoAction = (input) => (dispatch, getState) => {
 }
 
 export const deleteTaskAction = (id) => (dispatch, getState) => {
-   dispatch({
-    type: 'REMOVE_TODO',
-    payload: id
-   }) 
+    dispatch({
+        type: 'REMOVE_TODO',
+        payload: id
+    })
+}
+
+export const updateStatusAction = (id) => (dispatch, getState) => {
+    dispatch({
+        type: 'UPDATE_STATUS',
+        payload: id
+    })
 }
